@@ -16,6 +16,8 @@ bot = Bot(command_prefix="$", intents=intents)
 
 def get_chanels():
     list = Settings().get("channels")
+    if list is None:
+        return []
     channels = []
     for item in list:
         guild = discord.utils.get(bot.guilds, id=item["guild"])
